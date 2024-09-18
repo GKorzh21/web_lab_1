@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacts - My Website</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div id="header"></div>
+
+    <section class="contacts-intro">
+        <div class="container text-center">
+            <div class="intro-wrap col-lg-12">
+                <h1>Contact Us</h1>
+                <p>Feel free to get in touch with us for any inquiries, feedback, or to request a service. We're here to help!</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-details">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h2>Our Contacts</h2>
+                    <p><strong>Address:</strong> 1234 Street Name, City, Country</p>
+                    <p><strong>Phone:</strong> +123 456 7890</p>
+                    <p><strong>Email:</strong> info@mywebsite.com</p>
+                    <p><strong>Working Hours:</strong> Monday - Friday, 9 AM - 5 PM</p>
+                </div>
+                <div class="col-md-6">
+                    <h2>Contact Form</h2>
+                    <div class="card p-4">
+                        <form>
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message" class="form-label">Message</label>
+                                <textarea class="form-control" id="message" rows="4" placeholder="Your Message"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Submit</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="yandex-map">
+        <div class="container-fluid p-0">
+            <div id="map" style="width: 100%; height: 450px;"></div>
+        </div>
+    </section>
+
+    <div id="footer"></div>
+
+    <!-- Подключение API Яндекс.Карт -->
+    <script src="https://api-maps.yandex.ru/2.1/?lang=en_RU" type="text/javascript"></script>
+    <script type="text/javascript">
+        ymaps.ready(function () {
+            var myMap = new ymaps.Map("map", {
+                center: [53.304450, 34.303886], // Координаты (Москва)
+                zoom: 10
+            }, {
+                searchControlProvider: 'yandex#search'
+            });
+
+            // Добавление метки на карту
+            var myPlacemark = new ymaps.Placemark([53.304450, 34.303886], {
+                hintContent: 'Our Office',
+                balloonContent: 'This is where our office is located'
+            }, {
+                iconLayout: 'default#image',
+                iconImageHref: 'https://cdn-icons-png.flaticon.com/512/684/684908.png', // Иконка метки
+                iconImageSize: [30, 42], // Размер иконки
+                iconImageOffset: [-15, -42] // Смещение иконки
+            });
+
+            myMap.geoObjects.add(myPlacemark);
+        });
+    </script>
+
+    <script src="main.js"></script>
+</body>
+</html>
